@@ -1,0 +1,17 @@
+
+pluginManagement {
+
+    plugins {
+        id 'org.springframework.boot' version "${spring_boot_version}"
+        id 'io.spring.dependency-management' version "${spring_dependency_management_version}"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+}
+rootProject.name = 'hazelcast-client'
+include 'api-models'
+include 'api-service'
+

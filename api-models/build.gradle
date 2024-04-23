@@ -1,0 +1,65 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot'
+    id 'maven-publish'
+}
+
+
+dependencies {
+    implementation "com.hazelcast:hazelcast-spring"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java // Ensure you are publishing the Java component
+
+            // Correct the artifactId, groupId, and version configuration
+            groupId = "${group}"
+            artifactId = 'api-models'
+            version = '0.0.1'
+
+            // Fix version mapping block
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult() // This can be used if you don't need a specific classpath
+                }
+            }
+
+            // Configure the POM with correct setters
+            pom {
+                name.set('api-models')
+                description.set('Models for hazelcast server')
+//                url.set('http://www.example.com/api-models') // Optionally set URL
+//                licenses {
+//                    license {
+//                        name.set('The Apache License, Version 2.0')
+//                        url.set('http://www.apache.org/licenses/LICENSE-2.0.txt')
+//                    }
+//                }
+
+//                developers {
+//                    developer {
+//                        id.set('developer-id')
+//                        name.set('Developer Name')
+//                        email.set('developer@example.com')
+//                    }
+//                }
+//
+//                scm {
+//                    connection.set('scm:git:git://github.com/example/api-models.git')
+//                    developerConnection.set('scm:git:ssh://github.com/example/api-models.git')
+//                    url.set('http://github.com/example/api-models')
+//                }
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}
