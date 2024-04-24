@@ -3,13 +3,17 @@ package ca.siva.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name = "post_requests")
-public class PostRequest {
+public class PostRequest implements Serializable {
+
+    private static final long serialVersionUID = 1234L;
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 50)
     private String id;
 
@@ -17,7 +21,7 @@ public class PostRequest {
     private Timestamp created;
 
     @Lob
-    @Column(name = "document", nullable = false)
+    @Column(name = "document")
     private String document;
 
     // Getters and setters

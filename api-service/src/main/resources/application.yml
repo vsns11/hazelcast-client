@@ -1,0 +1,7 @@
+hazelcast:
+  client:
+    instance-name: hz-cluster
+    addresses:
+      - "localhost:5701"
+server:
+  port: 8082

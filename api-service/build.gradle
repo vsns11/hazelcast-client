@@ -3,10 +3,14 @@ plugins {
 }
 
 
+group="ca.apiclient"
+
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-
+    implementation 'com.hazelcast:hazelcast:5.3.7'
+    implementation project(':api-models')
 }

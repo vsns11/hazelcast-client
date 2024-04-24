@@ -4,7 +4,6 @@ plugins {
 }
 
 subprojects {
-    group = "${group}"
     version = "${version}"
 
     apply plugin: 'java'
